@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">News 24(Beta)</string>
+    <string name="loading_error">Error</string>
+    <string name="error">Error</string>
+    <string name="content_description">hello world!</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="section_name">section name</string>
+    <string name="title">Title</string>
+    <string name="author">author</string>
+    <string name="description">Description</string>
+    <string name="link">link</string>
+    <string name="news_24">News 24</string>
+    <string name="home">home</string>
+    <string name="search">search</string>
+    <string name="saved">save</string>
+</resources>

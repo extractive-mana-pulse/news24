@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.MainFragment">
+
+    <!--    Custom TabLayout    -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tb"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        app:tabMode="scrollable"
+        android:background="?attr/colorOnPrimary"
+        app:tabIndicatorGravity="stretch"
+        app:tabIndicatorAnimationMode="linear"
+        app:tabTextColor="@color/gray"
+        app:tabSelectedTextColor="@color/white"
+        app:tabIndicatorColor="@null"
+        app:tabIndicator="@drawable/tab_indicator"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    </com.google.android.material.tabs.TabLayout>
+
+    <!--    ViewPager2    -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
