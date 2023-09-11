@@ -21,13 +21,16 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/img"
+            android:id="@+id/loadImage"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:contentDescription="@string/content_description"
             android:padding="5dp"
-            android:src="@drawable/nyt"/>
+            android:src="@drawable/nyt" />
 
         <TextView
             android:id="@+id/Title"
@@ -35,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/img"
+            android:layout_toEndOf="@id/loadImage"
             android:text="@string/title"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -48,7 +51,7 @@
             android:layout_below="@id/Title"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:layout_toEndOf="@id/img"
+            android:layout_toEndOf="@id/loadImage"
             android:drawablePadding="2dp"
             android:text="@string/author"/>
 
@@ -61,7 +64,19 @@
             android:layout_below="@id/Person"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/img"
+            android:layout_toEndOf="@id/loadImage"
+            android:drawablePadding="2dp"/>
+
+        <TextView
+            android:id="@+id/cropName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test crop name"
+            android:textColor="@color/sectionColor"
+            android:layout_below="@id/sectionName"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/loadImage"
             android:drawablePadding="2dp"/>
 
         <ImageView

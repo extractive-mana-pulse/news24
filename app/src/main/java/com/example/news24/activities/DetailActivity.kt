@@ -30,19 +30,12 @@ class DetailActivity : AppCompatActivity() {
         val person = intent.getStringExtra("organization")
         val description = intent.getStringExtra("description")
         val link = intent.getStringExtra("link")
-
-        val multimedia = mutableListOf<Multimedia>()
-
-        Log.d(TAG, multimedia.lastOrNull()?.url.toString())
-
-        val url = multimedia.lastOrNull()?.url
+        val image = intent.getStringExtra("image")
 
         binding.apply {
-            if (url == null){
-                imgSet.setImageResource(R.drawable.nyt)
-            }else{
-                Glide.with(root).load(url).into(imgSet)
-            }
+            Glide.with(this@DetailActivity)
+                .load("https://www.nytimes.com/${image}")
+                .into(binding.imgSet)
             setTitleTV.text = title
             sectionData.text = section
             setAuthorNameTV.text = person

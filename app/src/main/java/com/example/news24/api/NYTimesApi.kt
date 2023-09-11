@@ -1,26 +1,18 @@
 package com.example.news24.api
 
 import com.example.news24.constants.Constants.Companion.API_KEY
+import com.example.news24.data.Doc
 import com.example.news24.data.Head
+import com.example.news24.data.Multimedia
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface NYTimesApi {
 
-//    @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=${API_KEY}")
-//    suspend fun getNewsAutomobileTest(
-//        @Query("facet")
-//        f: Boolean = true,
-//        @Query("facet_fields")
-//        ff : String = "section_name",
-//        @Query("facet_filter")
-//        ff1 : Boolean = true,
-//        @Query("fq")
-//        fq: String = "Automobiles",
-//        @Query("page")
-//        pageNumber: Int = 1
-//    ):Response<Head>
+    @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=QkYf9OYMHbouLn6CvJKGT7k7e99rycFA")
+    suspend fun getArticle(): Head
 
     @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=${API_KEY}")
     suspend fun getNewsAutomobile(

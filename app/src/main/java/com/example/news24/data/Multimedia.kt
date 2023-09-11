@@ -3,7 +3,7 @@ package com.example.news24.data
 data class Multimedia(
     // val caption: Any,
     // val credit: Any,
-    // val crop_name: String,
+//     val crop_name: String,
     // val height: Int,
     // val legacy: Legacy,
     // val rank: Int,
