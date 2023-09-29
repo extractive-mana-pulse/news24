@@ -13,12 +13,13 @@ import com.example.news24.data.Multimedia
 import com.example.news24.database.MainDatabase
 import com.example.news24.database.ShortenedDoc
 import com.example.news24.databinding.ActivityDetailBinding
+import com.example.news24.mvvm.NewsRepository
 
 class DetailActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityDetailBinding.inflate(layoutInflater) }
 
-    private var isImage1Displayed = true
+//    private lateinit var newsRepository: NewsRepository
 
     @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,21 +62,31 @@ class DetailActivity : AppCompatActivity() {
                     section.toString(),
                     link.toString()
                 )
-                isImage1Displayed = if (isImage1Displayed) {
-                    Thread {
-                        db.getDao().addNews(news)
-                    }.start()
-                    add.setImageResource(R.drawable.baseline_bookmark_added_24)
-                    false
-                } else {
-                    add.setImageResource(R.drawable.baseline_bookmark_add_24)
-                    true
-                }
+
+//                newsRepository = NewsRepository(db.getDao())
+
+                Thread {
+                    db.getDao().addNews(news)
+                }.start()
+
+                add.setImageResource(R.drawable.baseline_bookmark_added_24)
+
+
+//                val idToCheck = news.id
+//                val exists = newsRepository.isDataExistById(idToCheck)
+//
+//                // Check your condition
+//                if (exists) {
+//                    // Change the src to a new image when the condition is met
+//                    add.setImageResource(R.drawable.baseline_bookmark_added_24)
+//                } else {
+//                    // Set it back to the initial image when the condition is not met
+//                    add.setImageResource(R.drawable.baseline_bookmark_add_24)
+//                }
             }
         }
-        // check if added to database
-        // addToDatabase(title.toString(),person.toString(),description.toString(),section.toString(),link.toString())
     }
+
 
     private fun shareData() {
         val link = intent.getStringExtra("link")
@@ -85,16 +96,16 @@ class DetailActivity : AppCompatActivity() {
         startActivity(Intent.createChooser(intent,"Choose app:"))
     }
 
-    private fun addToDatabase(title: String, person: String, description: String, section: String, link: String) {
-        val db = MainDatabase.invoke(this@DetailActivity)
-        val news = ShortenedDoc(null, title, person, description, section, link)
-        val existingItem = news.id?.let { db.getDao().getItemByIdOrTitle(it, news.title) }
-        if (existingItem != null) {
-            binding.add.setImageResource(R.drawable.baseline_bookmark_added_24)
-            isImage1Displayed = false
-            Toast.makeText(this@DetailActivity, "Item already exists", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this@DetailActivity, "Item added to database", Toast.LENGTH_SHORT).show()
-        }
-    }
+//    private fun addToDatabase(title: String, person: String, description: String, section: String, link: String) {
+//        val db = MainDatabase.invoke(this@DetailActivity)
+//        val news = ShortenedDoc(null, title, person, description, section, link)
+//        val existingItem = news.id?.let { db.getDao().getItemByIdOrTitle(it, news.title) }
+//        if (existingItem != null) {
+//            binding.add.setImageResource(R.drawable.baseline_bookmark_added_24)
+//            isImage1Displayed = false
+//            Toast.makeText(this@DetailActivity, "Item already exists", Toast.LENGTH_SHORT).show()
+//        } else {
+//            Toast.makeText(this@DetailActivity, "Item added to database", Toast.LENGTH_SHORT).show()
+//        }
+//    }
 }

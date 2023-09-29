@@ -24,4 +24,7 @@ interface Dao {
 
     @Query("SELECT * FROM News WHERE id = :itemId OR title = :itemTitle")
     fun getItemByIdOrTitle(itemId: Int, itemTitle: String): ShortenedDoc?
+
+    @Query("SELECT * FROM News WHERE id = :id")
+    fun getEntityById(id: Int?): ShortenedDoc?
 }

@@ -13,4 +13,9 @@ class NewsRepository @Inject constructor(private val dao: Dao) {
         dao.delete(shortenedDoc)
     }
 
+    // Function to check if data with a specific ID exists
+    fun isDataExistById(id: Int?): Boolean {
+        val entity = dao.getEntityById(id)
+        return entity != null
+    }
 }

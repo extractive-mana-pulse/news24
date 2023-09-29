@@ -9,18 +9,12 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import android.os.StrictMode
-import android.os.StrictMode.ThreadPolicy
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import com.example.news24.R
 import com.example.news24.databinding.ActivityMainBinding
-import java.net.HttpURLConnection
-import java.net.URL
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,15 +25,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        // test code only
-        val policy = ThreadPolicy.Builder().permitAll().build()
-
-        StrictMode.setThreadPolicy(policy)
-
-        binding.check.setOnClickListener {
-            main()
-        }
 
         supportActionBar?.hide()
 
@@ -63,28 +48,6 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnItemSelectedListener true
         }
-    }
-
-    // test code only
-    private fun main() {
-        val urlString = "https://api.nytimes.com/" // Замените на URL вашего сервера
-        val url = URL(urlString)
-        val connection = url.openConnection() as HttpURLConnection
-        connection.requestMethod = "GET"
-
-        val responseCode = connection.responseCode
-        Toast.makeText(this, "(\"Код ответа: $responseCode\")", Toast.LENGTH_SHORT).show()
-
-        if (responseCode == HttpURLConnection.HTTP_OK) {
-            // Запрос выполнен успешно
-            // Дополнительный код обработки ответа сервера
-            Toast.makeText(this, "запрос выполнен успешно", Toast.LENGTH_SHORT).show()
-        } else {
-            // Обработка ошибок
-            Toast.makeText(this, "ошибка?", Toast.LENGTH_SHORT).show()
-        }
-
-        connection.disconnect()
     }
 
     private fun ImageView.roundedCornerDrawable(radius: Float) {
