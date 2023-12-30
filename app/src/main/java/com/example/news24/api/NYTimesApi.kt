@@ -8,9 +8,6 @@ import retrofit2.http.Query
 
 interface NYTimesApi {
 
-    @GET("svc/archive/v1/2020/6.json?api-key=QkYf9OYMHbouLn6CvJKGT7k7e99rycFA")
-    suspend fun getArticle(): Response<com.example.news24.data.archive.Head>
-
     @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=${API_KEY}")
     suspend fun getNewsAutomobile(
         @Query("q")
@@ -19,7 +16,7 @@ interface NYTimesApi {
         pageNumber: Int = 0
     ):Response<Head>
 
-    @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=${API_KEY}")
+    @GET("svc/search/v2/articlesearch.json?q=business&api-key=${API_KEY}")
     suspend fun getNewsBusiness(
         @Query("q")
         q : String = "Business",
@@ -27,7 +24,7 @@ interface NYTimesApi {
         pageNumber: Int = 1
     ):Response<Head>
 
-    @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=${API_KEY}")
+    @GET("svc/search/v2/articlesearch.json?q=sports&api-key=${API_KEY}")
     suspend fun getNewsSports(
         @Query("q")
         q : String = "Sports",
@@ -35,7 +32,7 @@ interface NYTimesApi {
         pageNumber: Int = 2
     ):Response<Head>
 
-    @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=${API_KEY}")
+    @GET("svc/search/v2/articlesearch.json?q=world&api-key=${API_KEY}")
     suspend fun getNewsWorld(
         @Query("q")
         q : String = "World",
@@ -43,7 +40,7 @@ interface NYTimesApi {
         pageNumber: Int = 3
     ):Response<Head>
 
-    @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=${API_KEY}")
+    @GET("svc/search/v2/articlesearch.json?q=science&api-key=${API_KEY}")
     suspend fun getNewsScience(
         @Query("q")
         q : String = "Science",
@@ -51,7 +48,7 @@ interface NYTimesApi {
         pageNumber: Int = 4
     ):Response<Head>
 
-    @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=${API_KEY}")
+    @GET("svc/search/v2/articlesearch.json?q=national&api-key=${API_KEY}")
     suspend fun getNewsNational(
         @Query("q")
         q : String = "National",
@@ -59,7 +56,7 @@ interface NYTimesApi {
         pageNumber: Int = 5
     ):Response<Head>
 
-    @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=${API_KEY}")
+    @GET("svc/search/v2/articlesearch.json?q=technology&api-key=${API_KEY}")
     suspend fun getNewsTechnology(
         @Query("q")
         q : String = "Technology",
@@ -67,7 +64,7 @@ interface NYTimesApi {
         pageNumber: Int = 6
     ):Response<Head>
 
-    @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=${API_KEY}")
+    @GET("svc/search/v2/articlesearch.json?q=politics&api-key=${API_KEY}")
     suspend fun getNewsPolitics(
         @Query("q")
         q : String = "Politics",
@@ -75,13 +72,6 @@ interface NYTimesApi {
         pageNumber: Int = 7
     ):Response<Head>
 
-
-    // TODO improve search system! Read documentation nyt: facets, facet_fields
-    @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=${API_KEY}")
-    suspend fun searchNews(
-        @Query("q")
-        q : String = "all",
-//        facet_fields : String = "day_of_week",
-//        facet : Boolean = true
-    ):Response<Head>
+    @GET("svc/search/v2/articlesearch.json?q=all&api-key=${API_KEY}")
+    suspend fun searchNews(@Query("q") q : String = "all", ):Response<Head>
 }

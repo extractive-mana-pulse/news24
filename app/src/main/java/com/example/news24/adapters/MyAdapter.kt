@@ -55,7 +55,7 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
         }
 
         holder.itemView.apply {
-            holder.binding.Title.text = data.abstract
+            holder.binding.titleTv.text = data.abstract
             holder.binding.Person.text = data.byline.original
             holder.binding.sectionName.text = data.section_name
         }

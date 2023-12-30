@@ -38,7 +38,7 @@ class BusinessFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = myAdapter
 
-        viewModel.getNewsEntertainment()
+        viewModel.getNewsBusiness()
         viewModel.myResponse.observe(requireActivity()) { response ->
 
             if (response.isSuccessful) {

@@ -14,8 +14,6 @@ import com.example.news24.mvvm.Repository
 import com.example.news24.adapters.MyAdapter
 import com.example.news24.constants.Constants
 import com.example.news24.databinding.FragmentNationalBinding
-import java.net.HttpURLConnection
-import java.net.URL
 
 class NationalFragment : Fragment() {
 
@@ -38,9 +36,8 @@ class NationalFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = myAdapter
 
-        viewModel.getArticle()
+        viewModel.getNewsNational()
         viewModel.myResponse.observe(requireActivity()) { response ->
-
             if (response.isSuccessful) {
                 response.body()?.let { myAdapter.setData(it.response.docs) }
             } else {

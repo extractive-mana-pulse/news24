@@ -38,7 +38,7 @@ class WorldFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = myAdapter
 
-        viewModel.getNewsMiscellaneous()
+        viewModel.getNewsWorld()
         viewModel.myResponse.observe(requireActivity()) { response ->
 
             if (response.isSuccessful) {

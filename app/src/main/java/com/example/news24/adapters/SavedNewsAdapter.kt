@@ -32,7 +32,7 @@ class SavedNewsAdapter: RecyclerView.Adapter<SavedNewsAdapter.SavedViewHolder>()
     @SuppressLint("DiscouragedPrivateApi")
     override fun onBindViewHolder(holder: SavedNewsAdapter.SavedViewHolder, position: Int) {
         val data = listSaves[position]
-        holder.binding.titleTv.text = data.title
+        holder.binding.titleSavesTv.text = data.title
         holder.binding.personTv.text = data.person
         holder.binding.sectionTv.text = data.section_name
 
@@ -45,7 +45,7 @@ class SavedNewsAdapter: RecyclerView.Adapter<SavedNewsAdapter.SavedViewHolder>()
             intent.putExtra("Connection", data.link)
             holder.itemView.context.startActivity(intent)
         }
-        holder.binding.removeSaved.setOnClickListener {
+        holder.binding.removeFromSaves.setOnClickListener {
             val db = MainDatabase.invoke(holder.itemView.context)
             db.getDao().delete(data)
         }

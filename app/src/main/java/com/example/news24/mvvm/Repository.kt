@@ -7,9 +7,6 @@ import retrofit2.Response
 class Repository {
 
 
-    suspend fun getArticle() : Response<com.example.news24.data.archive.Head> {
-        return RetrofitInstance.api.getArticle()
-    }
     suspend fun getNewsAutomobile() : Response<Head> {
         return RetrofitInstance.api.getNewsAutomobile("Automobiles",0)
     }

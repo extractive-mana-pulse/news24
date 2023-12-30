@@ -1,5 +1,6 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
@@ -9,54 +10,47 @@
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
 
-    <!-- In the above card view widget card elevation property will give elevation to your card view
-        card corner radius will provide radius to your card view card background color will give
-        background color to your card view card max elevation will give the card view maximum
-        elevation card prevent corner overlap will add padding to CardView on v20 and before to
-        prevent intersections between the Card content and rounded corners. Card use compact padding
-        will add padding in API v21+ as well to have the same measurements with previous versions -->
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/loadImage"
+            android:id="@+id/load_image"
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:src="@drawable/nyt"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:contentDescription="@string/content_description"
             android:padding="5dp"
-            android:src="@drawable/nyt" />
+            tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/Title"
+            android:id="@+id/title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/loadImage"
+            android:layout_toEndOf="@id/load_image"
             android:text="@string/title"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/Person"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Title"
+            android:text="@string/author"
+            android:layout_below="@id/title_tv"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_toEndOf="@id/loadImage"
-            android:drawablePadding="2dp"
-            android:text="@string/author"/>
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@id/load_image"
+            android:drawablePadding="2dp"/>
 
         <TextView
-            android:id="@+id/sectionName"
+            android:id="@+id/section_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/section_name"
@@ -64,32 +58,20 @@
             android:layout_below="@id/Person"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/loadImage"
-            android:drawablePadding="2dp"/>
-
-        <TextView
-            android:id="@+id/cropName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="test crop name"
-            android:textColor="@color/sectionColor"
-            android:layout_below="@id/sectionName"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/loadImage"
+            android:layout_toEndOf="@id/load_image"
             android:drawablePadding="2dp"/>
 
         <ImageView
-            android:id="@+id/optionsMenu"
+            android:id="@+id/options_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_below="@id/sectionName"
+            android:layout_below="@id/section_name"
             android:layout_marginTop="-20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:src="@drawable/baseline_more_horiz_24"
-            android:contentDescription="@string/content_description"/>
+            tools:ignore="ContentDescription" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

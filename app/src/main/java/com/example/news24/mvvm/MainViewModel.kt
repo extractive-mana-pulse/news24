@@ -11,23 +11,8 @@ class MainViewModel(private val repository: Repository): ViewModel() {
 
     val myResponse: MutableLiveData<Response<Head>> = MutableLiveData()
 
-    val archiveResponse: MutableLiveData<Response<com.example.news24.data.archive.Head>> = MutableLiveData()
-
     val searchNews: MutableLiveData<Resource<Head>> = MutableLiveData()
 
-//    fun getNewsAutomobileTest() {
-//        viewModelScope.launch {
-//            val response = repository.getNewsAutomobileTest()
-//            myResponse.value = response
-//        }
-//    }
-
-    fun getArticle() {
-        viewModelScope.launch {
-            val response = repository.getArticle()
-            archiveResponse.value = response
-        }
-    }
 
     fun getNewsAutomobile() {
         viewModelScope.launch {
@@ -35,19 +20,19 @@ class MainViewModel(private val repository: Repository): ViewModel() {
             myResponse.value = response
         }
     }
-    fun getNewsEntertainment() {
+    fun getNewsBusiness() {
         viewModelScope.launch {
             val response = repository.getNewsBusiness()
             myResponse.value = response
         }
     }
-    fun getNewsHatke() {
+    fun getNewsSport() {
         viewModelScope.launch {
             val response = repository.getNewsSports()
             myResponse.value = response
         }
     }
-    fun getNewsMiscellaneous() {
+    fun getNewsWorld() {
         viewModelScope.launch {
             val response = repository.getNewsWorld()
             myResponse.value = response
@@ -59,7 +44,7 @@ class MainViewModel(private val repository: Repository): ViewModel() {
             myResponse.value = response
         }
     }
-    fun getNewsStartup() {
+    fun getNewsNational() {
         viewModelScope.launch {
             val response = repository.getNewsNational()
             myResponse.value = response

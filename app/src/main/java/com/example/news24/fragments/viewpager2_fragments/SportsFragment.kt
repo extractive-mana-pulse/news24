@@ -37,7 +37,7 @@ class SportsFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = myAdapter
 
-        viewModel.getNewsHatke()
+        viewModel.getNewsSport()
         viewModel.myResponse.observe(requireActivity()) { response ->
 
             if (response.isSuccessful) {
