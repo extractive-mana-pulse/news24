@@ -3,13 +3,15 @@ package com.example.news24.mvvm
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.news24.data.Head
+import com.example.news24.data.search.Head
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class MainViewModel(private val repository: Repository): ViewModel() {
 
     val myResponse: MutableLiveData<Response<Head>> = MutableLiveData()
+
+    val archiveResponse: MutableLiveData<Response<com.example.news24.data.archive.Head>> = MutableLiveData()
 
     val searchNews: MutableLiveData<Resource<Head>> = MutableLiveData()
 
@@ -19,6 +21,13 @@ class MainViewModel(private val repository: Repository): ViewModel() {
 //            myResponse.value = response
 //        }
 //    }
+
+    fun getArticle() {
+        viewModelScope.launch {
+            val response = repository.getArticle()
+            archiveResponse.value = response
+        }
+    }
 
     fun getNewsAutomobile() {
         viewModelScope.launch {

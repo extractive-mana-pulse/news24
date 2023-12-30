@@ -1,18 +1,15 @@
 package com.example.news24.api
 
 import com.example.news24.constants.Constants.Companion.API_KEY
-import com.example.news24.data.Doc
-import com.example.news24.data.Head
-import com.example.news24.data.Multimedia
-import retrofit2.Call
+import com.example.news24.data.search.Head
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface NYTimesApi {
 
-    @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=QkYf9OYMHbouLn6CvJKGT7k7e99rycFA")
-    suspend fun getArticle(): Head
+    @GET("svc/archive/v1/2020/6.json?api-key=QkYf9OYMHbouLn6CvJKGT7k7e99rycFA")
+    suspend fun getArticle(): Response<com.example.news24.data.archive.Head>
 
     @GET("svc/search/v2/articlesearch.json?q=automobile&api-key=${API_KEY}")
     suspend fun getNewsAutomobile(

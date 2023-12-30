@@ -1,30 +1,18 @@
 package com.example.news24.activities
 
-import android.app.AlertDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ReportFragment.Companion.reportFragment
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavArgs
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import androidx.navigation.navArgs
 import com.example.news24.R
-import com.example.news24.database.MainDatabase
-import com.example.news24.database.ShortenedDoc
 import com.example.news24.databinding.ActivitySavesArticleBinding
-import com.example.news24.fragments.viewpager2_fragments.AutomobileFragment
-import com.example.news24.mvvm.NewsRepository
 import com.example.news24.mvvm.NewsViewModel
 
 class SavesArticleActivity : AppCompatActivity() {
 
+    private lateinit var noteVm: NewsViewModel
     private val binding by lazy { ActivitySavesArticleBinding.inflate(layoutInflater) }
 
-    private lateinit var noteVm: NewsViewModel
-
-//    private val args by navArgs<SavesArticleActivityArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,9 +41,6 @@ class SavesArticleActivity : AppCompatActivity() {
             sharingSaves.setOnClickListener {
                 shareData()
             }
-//            removeSaves.setOnClickListener {
-//                deleteNote()
-//            }
         }
     }
 
@@ -66,15 +51,4 @@ class SavesArticleActivity : AppCompatActivity() {
         intent.type = "text/plain"
         startActivity(Intent.createChooser(intent,"Choose app:"))
     }
-
-//    private fun deleteNote() {
-//        val builder = AlertDialog.Builder(this)
-//        builder.setPositiveButton("Yes"){ _,_ ->
-//            noteVm.deleteNote(args.dataItem)
-//        }
-//        builder.setNegativeButton("No"){_,_->}
-//        builder.setTitle("Delete ${args.dataItem.section_name}?")
-//        builder.setMessage("Are you sure that you want to delete this ${args.dataItem.section_name}?")
-//        builder.create().show()
-//    }
 }

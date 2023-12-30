@@ -1,4 +1,4 @@
-package com.example.news24.data
+package com.example.news24.data.search
 
 data class Head(
     val copyright: String,

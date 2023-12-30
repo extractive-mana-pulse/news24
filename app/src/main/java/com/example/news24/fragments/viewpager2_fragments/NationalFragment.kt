@@ -38,7 +38,7 @@ class NationalFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = myAdapter
 
-        viewModel.getNewsStartup()
+        viewModel.getArticle()
         viewModel.myResponse.observe(requireActivity()) { response ->
 
             if (response.isSuccessful) {

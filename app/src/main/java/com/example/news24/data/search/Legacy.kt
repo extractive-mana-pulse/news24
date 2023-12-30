@@ -1,4 +1,4 @@
-package com.example.news24.data
+package com.example.news24.data.search
 
 data class Legacy(
     val thumbnail: String,

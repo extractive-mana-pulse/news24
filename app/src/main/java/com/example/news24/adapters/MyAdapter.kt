@@ -13,22 +13,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.news24.R
 import com.example.news24.activities.DetailActivity
-import com.example.news24.api.NYTimesApi
-import com.example.news24.constants.Constants.Companion.BASE_URL
-import com.example.news24.data.Doc
-import com.example.news24.data.Multimedia
+import com.example.news24.data.search.Doc
+import com.example.news24.data.search.Multimedia
 import com.example.news24.database.MainDatabase
 import com.example.news24.database.ShortenedDoc
 import com.example.news24.databinding.RcViewUiBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
 
@@ -58,21 +47,12 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = list[position]
 
-        val docs = data.multimedia
-
-        val multimediaUrls = ArrayList<String>()
-
-        for (multimedia in docs){
-
-            val multimediaUrl = "https://www.nytimes.com/${multimedia.url}"
-
+        data.multimedia.forEach { multimedia ->
+            val x = "https://www.nytimes.com/${multimedia.url}"
             Glide.with(holder.itemView.context)
-                .load(multimediaUrl)
+                .load(x)
                 .into(holder.binding.loadImage)
-
-            multimediaUrls.add(multimediaUrl)
         }
-
 
         holder.itemView.apply {
             holder.binding.Title.text = data.abstract
@@ -88,7 +68,10 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
             intent.putExtra("organization", data.byline.original)
             intent.putExtra("description", data.lead_paragraph)
             intent.putExtra("link", data.web_url)
-            intent.putExtra("image",multimediaUrls)
+            data.multimedia.forEach { multimedia ->
+                val x = "https://www.nytimes.com/${multimedia.url}"
+                intent.putExtra("image", x)
+            }
             holder.itemView.context.startActivity(intent)
         }
 

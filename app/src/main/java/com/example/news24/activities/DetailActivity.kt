@@ -5,21 +5,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.news24.R
-import com.example.news24.constants.Constants.Companion.TAG
-import com.example.news24.data.Multimedia
 import com.example.news24.database.MainDatabase
 import com.example.news24.database.ShortenedDoc
 import com.example.news24.databinding.ActivityDetailBinding
-import com.example.news24.mvvm.NewsRepository
 
 class DetailActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityDetailBinding.inflate(layoutInflater) }
-
-//    private lateinit var newsRepository: NewsRepository
 
     @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,9 +28,15 @@ class DetailActivity : AppCompatActivity() {
         val image = intent.getStringExtra("image")
 
         binding.apply {
-            Glide.with(this@DetailActivity)
-                .load("https://www.nytimes.com/${image}")
-                .into(binding.imgSet)
+
+            val x = Glide.with(this@DetailActivity)
+                .load(image)
+                .error(R.drawable.baseline_close_24)
+                .centerInside()
+                .into(imageArticle)
+
+            Log.d("image", x.toString())
+
             setTitleTV.text = title
             sectionData.text = section
             setAuthorNameTV.text = person

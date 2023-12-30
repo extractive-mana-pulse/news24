@@ -1,14 +1,15 @@
 package com.example.news24.mvvm
 
 import com.example.news24.api.RetrofitInstance
-import com.example.news24.data.Head
+import com.example.news24.data.search.Head
 import retrofit2.Response
 
 class Repository {
 
-//    suspend fun getNewsAutomobileTest() : Response<Head> {
-//        return RetrofitInstance.api.getNewsAutomobileTest(true,"Automobiles",true,"Automobiles",1)
-//    }
+
+    suspend fun getArticle() : Response<com.example.news24.data.archive.Head> {
+        return RetrofitInstance.api.getArticle()
+    }
     suspend fun getNewsAutomobile() : Response<Head> {
         return RetrofitInstance.api.getNewsAutomobile("Automobiles",0)
     }

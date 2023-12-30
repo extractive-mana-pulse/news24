@@ -78,14 +78,13 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
-                android:id="@+id/imgSet"
+                android:id="@+id/image_article"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:src="@drawable/nyt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-                android:contentDescription="@string/content_description"/>
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/setTitle_TV"
@@ -97,7 +96,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imgSet"
+                app:layout_constraintTop_toBottomOf="@id/image_article"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <ImageView
