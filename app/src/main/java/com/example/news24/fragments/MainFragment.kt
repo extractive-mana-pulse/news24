@@ -22,31 +22,34 @@ class MainFragment : Fragment() {
         val adapter = ViewPagedAdapter(childFragmentManager, lifecycle)
 
         binding.vp2.adapter = adapter
-        TabLayoutMediator(binding.tb,binding.vp2){ tab,pos ->
+        TabLayoutMediator(binding.tabLayout,binding.vp2){ tab,pos ->
             when(pos){
+                // TODO { add this code: resources.getText(R.string.national).
+                //      purpose: make multi language app so when user change language titles also change
+                //  }
                 0->{
-                    tab.text = "national"
+                    tab.text = "National"
                 }
                 1->{
-                    tab.text = "business"
+                    tab.text = "Business"
                 }
                 2 ->{
-                    tab.text = "sports"
+                    tab.text = "Sport"
                 }
                 3 ->{
-                    tab.text = "world"
+                    tab.text = "World News"
                 }
                 4 ->{
-                    tab.text = "politics"
+                    tab.text = "Politics"
                 }
                 5 ->{
-                    tab.text = "technology"
+                    tab.text = "Technology"
                 }
                 6 ->{
-                    tab.text = "science"
+                    tab.text = "Science"
                 }
                 7 ->{
-                    tab.text = "automobile"
+                    tab.text = "Automobile"
                 }
             }
         }.attach()

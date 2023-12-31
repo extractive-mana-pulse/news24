@@ -56,7 +56,7 @@ interface NYTimesApi {
         pageNumber: Int = 5
     ):Response<Head>
 
-    @GET("svc/search/v2/articlesearch.json?q=technology&api-key=${API_KEY}")
+    @GET("svc/search/v2/articlesearch.json?facet=true&facet_fields=section_name&facet_filter=true&fq=technology&q=technology&api-key=${API_KEY}")
     suspend fun getNewsTechnology(
         @Query("q")
         q : String = "Technology",
@@ -72,6 +72,8 @@ interface NYTimesApi {
         pageNumber: Int = 7
     ):Response<Head>
 
+
+    // TODO { broken search need to fix }
     @GET("svc/search/v2/articlesearch.json?q=all&api-key=${API_KEY}")
-    suspend fun searchNews(@Query("q") q : String = "all", ):Response<Head>
+    suspend fun searchNews(@Query("q") q : String = "all"):Response<Head>
 }

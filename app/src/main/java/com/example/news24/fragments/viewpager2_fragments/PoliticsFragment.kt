@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.news24.adapters.MyAdapter
 import com.example.news24.constants.Constants
@@ -38,6 +39,7 @@ class PoliticsFragment : Fragment() {
         binding.recyclerView.adapter = myAdapter
 
         viewModel.getNewsPolitics()
+        binding.recyclerView.addItemDecoration(DividerItemDecoration(binding.recyclerView.context, DividerItemDecoration.VERTICAL))
         viewModel.myResponse.observe(requireActivity()) { response ->
 
             if (response.isSuccessful) {

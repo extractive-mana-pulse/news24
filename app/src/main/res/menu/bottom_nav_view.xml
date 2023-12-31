@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/homeMain"
-        android:title="@string/home"
-        android:icon="@drawable/ic_home"/>
+        android:icon="@drawable/home"
+        tools:ignore="MenuTitle"/>
 
     <item
         android:id="@+id/searchQuery"
-        android:title="@string/search"
-        android:icon="@drawable/ic_search"/>
+        android:icon="@drawable/search"
+        tools:ignore="MenuTitle"/>
 
     <item
         android:id="@+id/savedAll"
-        android:title="@string/saved"
-        android:icon="@drawable/baseline_bookmarks_24"/>
+        android:icon="@drawable/baseline_bookmarks_24"
+        tools:ignore="MenuTitle"/>
 </menu>

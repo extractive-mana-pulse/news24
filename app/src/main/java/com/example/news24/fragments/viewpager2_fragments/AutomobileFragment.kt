@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.news24.mvvm.MainViewModel
 import com.example.news24.mvvm.MainViewModelFactory
@@ -33,8 +34,9 @@ class AutomobileFragment : Fragment() {
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = myAdapter
+        binding.recyclerView.addItemDecoration(DividerItemDecoration(binding.recyclerView.context, DividerItemDecoration.VERTICAL))
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         viewModel.getNewsAutomobile()
         viewModel.myResponse.observe(requireActivity()) { response ->

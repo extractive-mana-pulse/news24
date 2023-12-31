@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">News 24(Beta)</string>
+    <string name="app_name">News 24</string>
     <string name="loading_error">Error</string>
     <string name="error">Error</string>
     <string name="content_description">hello world!</string>

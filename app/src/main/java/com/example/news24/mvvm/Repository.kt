@@ -31,6 +31,5 @@ class Repository {
     suspend fun getNewsPolitics() : Response<Head> {
         return RetrofitInstance.api.getNewsPolitics("Politics",7)
     }
-    suspend fun searchNews(searchQuery: String) =
-        RetrofitInstance.api.searchNews(searchQuery)
+    suspend fun searchNews(searchQuery: String) = RetrofitInstance.api.searchNews(searchQuery)
 }

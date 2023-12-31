@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide
 import com.example.news24.R
 import com.example.news24.activities.DetailActivity
 import com.example.news24.data.search.Doc
-import com.example.news24.data.search.Multimedia
 import com.example.news24.database.MainDatabase
 import com.example.news24.database.ShortenedDoc
 import com.example.news24.databinding.RcViewUiBinding
@@ -51,33 +50,41 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
             val x = "https://www.nytimes.com/${multimedia.url}"
             Glide.with(holder.itemView.context)
                 .load(x)
+                .error(R.drawable.ic_launcher_foreground)
+                .centerCrop()
                 .into(holder.binding.loadImage)
         }
 
         holder.itemView.apply {
-            holder.binding.titleTv.text = data.abstract
-            holder.binding.Person.text = data.byline.original
+            holder.binding.titleTv.text = data.headline.main
+            holder.binding.authorTv.text = data.byline.original
             holder.binding.sectionName.text = data.section_name
         }
 
         holder.itemView.setOnClickListener {
-
             val intent = Intent(holder.itemView.context, DetailActivity::class.java)
-            intent.putExtra("title", data.abstract)
+
+            intent.putExtra("title", data.headline.main)
             intent.putExtra("sectionData", data.section_name)
-            intent.putExtra("organization", data.byline.original)
-            intent.putExtra("description", data.lead_paragraph)
+
+            data.byline.person.forEach { person -> val firstname = person.firstname + " " + person.lastname
+                intent.putExtra("organization", firstname)
+            }
+
+            intent.putExtra("description", "Abstract: ${data.abstract}" + "\n" + "Lead paragraph: ${data.lead_paragraph}")
             intent.putExtra("link", data.web_url)
+
             data.multimedia.forEach { multimedia ->
                 val x = "https://www.nytimes.com/${multimedia.url}"
                 intent.putExtra("image", x)
             }
+
             holder.itemView.context.startActivity(intent)
         }
 
         holder.binding.optionsMenu.setOnClickListener {
 
-            val popupMenu = PopupMenu(holder.itemView.context, it)
+            val popupMenu = PopupMenu(holder.itemView.context, holder.binding.optionsMenu)
 
             popupMenu.setOnMenuItemClickListener { item ->
                 when (item.itemId){
@@ -99,10 +106,6 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
                             data.web_url
                         )
                         db.getDao().addNews(news)
-                        true
-                    }
-                    R.id.delete -> {
-
                         true
                     }
                     else -> false
