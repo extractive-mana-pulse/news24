@@ -32,5 +32,5 @@ data class ShortenedDoc(
 
     @ColumnInfo(name = "Link")
     @SerializedName("web_url")
-    val link: String,
+    val link: String
 ) : Parcelable

@@ -3,16 +3,15 @@
     <string name="loading_error">Error</string>
     <string name="error">Error</string>
     <string name="content_description">hello world!</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="section_name">section name</string>
+    <string name="section_name">Section name</string>
     <string name="title">Title</string>
-    <string name="author">author</string>
+    <string name="author">Author</string>
     <string name="description">Description</string>
-    <string name="link">link</string>
+    <string name="link">Link</string>
     <string name="news_24">News 24</string>
-    <string name="home">home</string>
-    <string name="search">search</string>
-    <string name="saved">save</string>
-    <string name="share">share</string>
-    <string name="delete">delete</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="save">Save</string>
+    <string name="share">Share</string>
+    <string name="delete">Delete</string>
 </resources>

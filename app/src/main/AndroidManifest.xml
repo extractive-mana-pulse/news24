@@ -14,13 +14,13 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".activities.SavesArticleActivity"
+            android:name=".presentation.activities.SavesArticleActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.DetailActivity"
+            android:name=".presentation.activities.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".presentation.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

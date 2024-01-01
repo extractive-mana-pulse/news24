@@ -3,17 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/homeMain"
+        android:id="@+id/home_page"
         android:icon="@drawable/home"
         tools:ignore="MenuTitle"/>
 
     <item
-        android:id="@+id/searchQuery"
+        android:id="@+id/search_page"
         android:icon="@drawable/search"
         tools:ignore="MenuTitle"/>
 
     <item
-        android:id="@+id/savedAll"
+        android:id="@+id/bookmarks"
         android:icon="@drawable/baseline_bookmarks_24"
         tools:ignore="MenuTitle"/>
 </menu>
