@@ -1,35 +1,36 @@
 package com.example.news24.presentation.fragments
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
+import android.speech.RecognizerIntent
+import android.speech.SpeechRecognizer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.news24.presentation.adapters.MyAdapter
-import com.example.news24.presentation.constants.Constants.Companion.DELAY
-import com.example.news24.presentation.constants.Constants.Companion.TAG
+import com.example.news24.R
 import com.example.news24.databinding.FragmentSearchBinding
+import com.example.news24.presentation.adapters.MyAdapter
+import com.example.news24.presentation.sealed.Resource
 import com.example.news24.viewModel.MainViewModel
 import com.example.news24.viewModel.MainViewModelFactory
 import com.example.news24.viewModel.Repository
-import com.example.news24.presentation.sealed.Resource
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 class SearchFragment : Fragment() {
 
-    private lateinit var binding: FragmentSearchBinding
-
+    private val RQ_SPEECH_REC = 102
     private lateinit var viewModel: MainViewModel
-
     private val myAdapter by lazy { MyAdapter() }
+    private lateinit var binding: FragmentSearchBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentSearchBinding.inflate(layoutInflater)
@@ -57,6 +58,14 @@ class SearchFragment : Fragment() {
                 }
             }
             false
+        }
+
+        binding.searchBar.inflateMenu(R.menu.searchbar_menu)
+        binding.searchBar.setOnMenuItemClickListener { menuItem ->
+            when(menuItem.itemId) {
+                R.id.mic -> { Speech() }
+            }
+            true
         }
 
         binding.rcView.layoutManager = LinearLayoutManager(requireContext())
@@ -93,6 +102,27 @@ class SearchFragment : Fragment() {
 //    private fun hideProgressBar(){
 //        binding.paginationProgressBar.visibility = View.INVISIBLE
 //    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RQ_SPEECH_REC && resultCode == Activity.RESULT_OK) {
+            val result = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            binding.searchBar.text = result?.firstOrNull()
+        }
+    }
+
+    private fun Speech(){
+        if (!SpeechRecognizer.isRecognitionAvailable(requireActivity())){
+            Toast.makeText(requireContext(), "Speech recognition is not available", Toast.LENGTH_SHORT).show()
+        } else {
+            val i = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+            i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+            i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+            i.putExtra(RecognizerIntent.EXTRA_PROMPT,"Speak")
+            startActivityForResult(i, RQ_SPEECH_REC)
+        }
+    }
 
     companion object {
         @JvmStatic
