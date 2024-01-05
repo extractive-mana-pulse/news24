@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.news24.R
 import com.example.news24.databinding.ActivitySavesArticleBinding
-import com.example.news24.mvvm.NewsViewModel
+import com.example.news24.viewModel.NewsViewModel
 
 class SavesArticleActivity : AppCompatActivity() {
 

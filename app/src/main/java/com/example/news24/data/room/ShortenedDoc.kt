@@ -1,4 +1,4 @@
-package com.example.news24.database
+package com.example.news24.data.room
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

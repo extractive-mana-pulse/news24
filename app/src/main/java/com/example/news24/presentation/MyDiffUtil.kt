@@ -1,7 +1,7 @@
 package com.example.news24.presentation
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.news24.database.ShortenedDoc
+import com.example.news24.data.room.ShortenedDoc
 
 class MyDiffUtil(private val notes: List<ShortenedDoc>, private val notesNew: List<ShortenedDoc>): DiffUtil.Callback() {
 

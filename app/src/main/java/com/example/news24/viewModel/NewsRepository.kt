@@ -1,8 +1,8 @@
-package com.example.news24.mvvm
+package com.example.news24.viewModel
 
 import androidx.lifecycle.LiveData
-import com.example.news24.database.Dao
-import com.example.news24.database.ShortenedDoc
+import com.example.news24.data.room.Dao
+import com.example.news24.data.room.ShortenedDoc
 import javax.inject.Inject
 
 class NewsRepository @Inject constructor(private val dao: Dao) {

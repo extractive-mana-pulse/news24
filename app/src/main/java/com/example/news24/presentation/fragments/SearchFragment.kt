@@ -44,16 +44,19 @@ class SearchFragment : Fragment() {
 
         var job: Job? = null
 
-        binding.etSearch.addTextChangedListener { editable ->
+        binding.searchView.editText.setOnEditorActionListener { v, actionId, event ->
+            binding.searchBar.text = binding.searchView.text
+            binding.searchView.hide()
             job?.cancel()
             job = MainScope().launch {
-                delay(DELAY)
-                editable?.let {
-                    if (editable.toString().isNotEmpty()){
-                        viewModel.searchNews(editable.toString())
+                delay(500)
+                binding.searchView.editText.let {
+                    if (binding.searchView.text!!.isNotEmpty()) {
+                        viewModel.searchNews(binding.searchBar.text.toString())
                     }
                 }
             }
+            false
         }
 
         binding.rcView.layoutManager = LinearLayoutManager(requireContext())
@@ -62,34 +65,34 @@ class SearchFragment : Fragment() {
         viewModel.searchNews.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
-                    hideProgressBar()
+//                    hideProgressBar()
                     response.data?.let { newsResponse ->
                         myAdapter.setData(newsResponse.response.docs)
                     }
                 }
 
                 is Resource.Error -> {
-                    hideProgressBar()
+//                    hideProgressBar()
                     response.message?.let { message ->
-                        Log.e(TAG, "Error occurs: $message")
+                        Toast.makeText(requireContext(), "Error: $message", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 is Resource.Loading -> {
-                    showProgressBar()
-                    Toast.makeText(requireContext(), "Loading . . .", Toast.LENGTH_SHORT).show()
+//                    showProgressBar()
+                    Toast.makeText(requireContext(), "Loading...", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
-    private fun showProgressBar() {
-        binding.paginationProgressBar.visibility = View.VISIBLE
-    }
-
-    private fun hideProgressBar(){
-        binding.paginationProgressBar.visibility = View.INVISIBLE
-    }
+//    private fun showProgressBar() {
+//        binding.paginationProgressBar.visibility = View.VISIBLE
+//    }
+//
+//    private fun hideProgressBar(){
+//        binding.paginationProgressBar.visibility = View.INVISIBLE
+//    }
 
     companion object {
         @JvmStatic

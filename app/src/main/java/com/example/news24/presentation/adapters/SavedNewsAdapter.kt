@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.news24.presentation.MyDiffUtil
 import com.example.news24.R
 import com.example.news24.presentation.activities.SavesArticleActivity
-import com.example.news24.database.MainDatabase
-import com.example.news24.database.ShortenedDoc
+import com.example.news24.data.room.MainDatabase
+import com.example.news24.data.room.ShortenedDoc
 import com.example.news24.databinding.SavedNewsUiBinding
 
 class SavedNewsAdapter: RecyclerView.Adapter<SavedNewsAdapter.SavedViewHolder>() {

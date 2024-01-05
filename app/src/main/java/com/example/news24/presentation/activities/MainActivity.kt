@@ -25,15 +25,18 @@ class MainActivity : AppCompatActivity() {
                     binding.topAppBar.isVisible = true
                 }
                 R.id.search_page ->{
-                    navController.navigate(R.id.searchFragment)
+                    navController.navigate(R.id.action_mainFragment_to_searchFragment)
                     binding.topAppBar.isVisible = false
                 }
                 R.id.bookmarks ->{
-                    navController.navigate(R.id.savedFragment)
+                    navController.navigate(R.id.action_mainFragment_to_savedFragment)
                     binding.topAppBar.isVisible = true
                 }
             }
             return@setOnItemSelectedListener true
+        }
+        binding.settingsImage.setOnClickListener {
+            navController.navigate(R.id.action_mainFragment_to_settingsFragment)
         }
     }
 }

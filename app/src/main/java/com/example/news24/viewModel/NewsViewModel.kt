@@ -1,4 +1,4 @@
-package com.example.news24.mvvm
+package com.example.news24.viewModel
 
 import android.app.Application
 import androidx.hilt.lifecycle.ViewModelInject
@@ -6,8 +6,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.news24.database.MainDatabase
-import com.example.news24.database.ShortenedDoc
+import com.example.news24.data.room.MainDatabase
+import com.example.news24.data.room.ShortenedDoc
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

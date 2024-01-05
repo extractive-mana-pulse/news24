@@ -14,8 +14,8 @@ import com.bumptech.glide.Glide
 import com.example.news24.R
 import com.example.news24.presentation.activities.DetailActivity
 import com.example.news24.data.search.Doc
-import com.example.news24.database.MainDatabase
-import com.example.news24.database.ShortenedDoc
+import com.example.news24.data.room.MainDatabase
+import com.example.news24.data.room.ShortenedDoc
 import com.example.news24.databinding.RcViewUiBinding
 
 class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>(){

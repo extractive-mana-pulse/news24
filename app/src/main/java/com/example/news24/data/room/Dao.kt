@@ -1,4 +1,4 @@
-package com.example.news24.database
+package com.example.news24.data.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

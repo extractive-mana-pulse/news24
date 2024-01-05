@@ -7,8 +7,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.news24.R
-import com.example.news24.database.MainDatabase
-import com.example.news24.database.ShortenedDoc
+import com.example.news24.data.room.MainDatabase
+import com.example.news24.data.room.ShortenedDoc
 import com.example.news24.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {

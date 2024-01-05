@@ -6,13 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.news24.R
-import com.example.news24.presentation.adapters.MyAdapter
 import com.example.news24.presentation.adapters.SavedNewsAdapter
 import com.example.news24.databinding.FragmentSavedBinding
-import com.example.news24.mvvm.NewsViewModel
+import com.example.news24.viewModel.NewsViewModel
 
 
 class SavedFragment : Fragment() {

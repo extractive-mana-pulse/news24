@@ -1,4 +1,4 @@
-package com.example.news24.database
+package com.example.news24.data.room
 
 import android.content.Context
 import androidx.room.Database
@@ -15,11 +15,11 @@ abstract class MainDatabase: RoomDatabase() {
         private var instance: MainDatabase? = null
         private val LOCK = Any()
 
-        operator fun invoke(context: Context) = instance?: synchronized(LOCK){
-            instance?: createDatabase(context).also { instance = it }
+        operator fun invoke(context: Context) = instance ?: synchronized(LOCK){
+            instance ?: createDatabase(context).also { instance = it }
         }
 
-        private fun createDatabase(context: Context): MainDatabase{
+        private fun createDatabase(context: Context): MainDatabase {
             return Room.databaseBuilder(context.applicationContext, MainDatabase::class.java,"news.db").allowMainThreadQueries().build()
         }
     }
