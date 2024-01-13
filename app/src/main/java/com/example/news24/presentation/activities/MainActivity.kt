@@ -20,23 +20,22 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavView.setOnItemSelectedListener {
             when(it.itemId){
-                R.id.home_page ->{
+                R.id.home_page -> {
                     navController.navigate(R.id.mainFragment)
                     binding.topAppBar.isVisible = true
                 }
-                R.id.search_page ->{
-                    navController.navigate(R.id.action_mainFragment_to_searchFragment)
+
+                R.id.search_page -> {
+                    navController.navigate(R.id.searchFragment)
                     binding.topAppBar.isVisible = false
                 }
-                R.id.bookmarks ->{
-                    navController.navigate(R.id.action_mainFragment_to_savedFragment)
+
+                R.id.bookmarks -> {
+                    navController.navigate(R.id.savedFragment)
                     binding.topAppBar.isVisible = true
                 }
             }
             return@setOnItemSelectedListener true
-        }
-        binding.settingsImage.setOnClickListener {
-            navController.navigate(R.id.action_mainFragment_to_settingsFragment)
         }
     }
 }

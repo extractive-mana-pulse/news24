@@ -11,27 +11,16 @@
         android:id="@+id/tab_layout"
         android:layout_width="0dp"
         android:layout_height="45dp"
+        app:tabMaxWidth="0dp"
         app:tabMode="scrollable"
-        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+        app:tabIndicatorHeight="2dp"
         app:tabIndicatorAnimationMode="linear"
         app:tabBackground="@drawable/tab_indicator"
-        app:tabIndicatorHeight="2dp"
-        app:tabMaxWidth="0dp"
         app:tabIndicatorColor="?attr/colorPrimaryVariant"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
-
-    <!--<ImageView
-        android:id="@+id/divider_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rc_view_divider"
-        tools:ignore="ContentDescription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tab_layout"/>-->
-
 
     <!--    ViewPager2    -->
     <androidx.viewpager2.widget.ViewPager2

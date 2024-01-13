@@ -27,7 +27,7 @@ import java.util.Locale
 
 class SearchFragment : Fragment() {
 
-    private val RQ_SPEECH_REC = 102
+    private val rqSpeechRec = 102
     private lateinit var viewModel: MainViewModel
     private val myAdapter by lazy { MyAdapter() }
     private lateinit var binding: FragmentSearchBinding
@@ -63,7 +63,7 @@ class SearchFragment : Fragment() {
         binding.searchBar.inflateMenu(R.menu.searchbar_menu)
         binding.searchBar.setOnMenuItemClickListener { menuItem ->
             when(menuItem.itemId) {
-                R.id.mic -> { Speech() }
+                R.id.mic -> { speech() }
             }
             true
         }
@@ -74,45 +74,44 @@ class SearchFragment : Fragment() {
         viewModel.searchNews.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
-//                    hideProgressBar()
+                    hideProgressBar()
                     response.data?.let { newsResponse ->
                         myAdapter.setData(newsResponse.response.docs)
                     }
                 }
 
                 is Resource.Error -> {
-//                    hideProgressBar()
+                    hideProgressBar()
                     response.message?.let { message ->
                         Toast.makeText(requireContext(), "Error: $message", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 is Resource.Loading -> {
-//                    showProgressBar()
-                    Toast.makeText(requireContext(), "Loading...", Toast.LENGTH_SHORT).show()
+                    showProgressBar()
                 }
             }
         }
     }
 
-//    private fun showProgressBar() {
-//        binding.paginationProgressBar.visibility = View.VISIBLE
-//    }
-//
-//    private fun hideProgressBar(){
-//        binding.paginationProgressBar.visibility = View.INVISIBLE
-//    }
+    private fun showProgressBar() {
+        binding.paginationProgressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar(){
+        binding.paginationProgressBar.visibility = View.INVISIBLE
+    }
 
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RQ_SPEECH_REC && resultCode == Activity.RESULT_OK) {
+        if (requestCode == rqSpeechRec && resultCode == Activity.RESULT_OK) {
             val result = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
             binding.searchBar.text = result?.firstOrNull()
         }
     }
 
-    private fun Speech(){
+    private fun speech(){
         if (!SpeechRecognizer.isRecognitionAvailable(requireActivity())){
             Toast.makeText(requireContext(), "Speech recognition is not available", Toast.LENGTH_SHORT).show()
         } else {
@@ -120,7 +119,7 @@ class SearchFragment : Fragment() {
             i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
             i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
             i.putExtra(RecognizerIntent.EXTRA_PROMPT,"Speak")
-            startActivityForResult(i, RQ_SPEECH_REC)
+            startActivityForResult(i, rqSpeechRec)
         }
     }
 

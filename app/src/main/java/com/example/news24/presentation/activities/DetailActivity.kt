@@ -66,7 +66,7 @@ class DetailActivity : AppCompatActivity() {
                     db.getDao().addNews(news)
                 }.start()
 
-                add.setImageResource(R.drawable.baseline_bookmark_added_24)
+                add.setImageResource(R.drawable.baseline_bookmark_add_24)
 
 
 //                val idToCheck = news.id

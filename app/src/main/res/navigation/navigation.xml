@@ -9,17 +9,18 @@
         android:id="@+id/mainFragment"
         android:name="com.example.news24.presentation.fragments.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
+
         <action
             android:id="@+id/action_mainFragment_to_savedFragment"
             app:destination="@id/savedFragment"
             app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
+
         <action
             android:id="@+id/action_mainFragment_to_searchFragment"
-            app:destination="@id/searchFragment"
-            app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="true"/>
+            app:destination="@id/searchFragment" />
+
         <action
             android:id="@+id/action_mainFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
@@ -29,42 +30,57 @@
         android:id="@+id/savedFragment"
         android:name="com.example.news24.presentation.fragments.SavedFragment"
         android:label="fragment_saved"
-        tools:layout="@layout/fragment_saved" >
+        tools:layout="@layout/fragment_saved">
+
         <action
             android:id="@+id/action_savedFragment_to_mainFragment"
             app:destination="@id/mainFragment"
             app:popUpTo="@id/savedFragment"
-            app:popUpToInclusive="false"/>
+            app:popUpToInclusive="false" />
+
         <action
             android:id="@+id/action_savedFragment_to_searchFragment"
             app:destination="@id/searchFragment"
-            app:popUpTo="@id/savedFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@id/searchFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.news24.presentation.fragments.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
+        tools:layout="@layout/fragment_search">
+
         <action
             android:id="@+id/action_searchFragment_to_mainFragment"
             app:destination="@id/mainFragment"
             app:popUpTo="@id/searchFragment"
-            app:popUpToInclusive="false"/>
+            app:popUpToInclusive="false" />
+
         <action
             android:id="@+id/action_searchFragment_to_savedFragment"
             app:destination="@id/savedFragment"
-            app:popUpTo="@id/searchFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@id/savedFragment"
+            app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.news24.presentation.fragments.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
+        tools:layout="@layout/fragment_settings">
+
         <action
             android:id="@+id/action_settingsFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+
+        <action
+            android:id="@+id/action_settingsFragment_to_savedFragment"
+            app:destination="@id/savedFragment" />
+
+        <action
+            android:id="@+id/action_settingsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
+
 </navigation>
